@@ -11,6 +11,7 @@ def task():
 task()
 thr_1 = threading.Thread(target=task)
 thr_1.start()
+thr_1.join()
 
-print(f"{threading.active_count() = }")
+print(f"{threading.active_count()=}")
 print("END MAIN")
