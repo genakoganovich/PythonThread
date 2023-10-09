@@ -25,17 +25,17 @@ def get_request_header(url: str):
 import threading
 
 # Ваше решение
-headers_stor = dict.fromkeys(sources, 'no_response')
 threads = []
 
 for source in sources:
+    headers_stor[source] = 'no_response'
     threads.append(threading.Thread(target=get_request_header, args=(source,), daemon=True))
 
 for thread in threads:
     thread.start()
 
 for thread in threads:
-    thread.join(0.1)
+    thread.join(0.5)
 
 assert perf_counter() - start_time <= 2  # проверка того, что решение выполняется не более 2 секунд
 
